@@ -12,7 +12,7 @@ namespace EventsAndDelegates
         // Three steps we need to follow:
 
         // 1 - define a delegate, contract between the publisher and the subscriper
-        public delegate void VideoEncodedEventHandler(object source, EventArgs args);
+        public delegate void VideoEncodedEventHandler(object source, VideoEventArgs args);
 
         // 2 - define an event based on that delegate, notice it is in the past tens something that happend and finnish
         public event VideoEncodedEventHandler VideoEncoded;
@@ -26,11 +26,11 @@ namespace EventsAndDelegates
 
         // 3 - Raise the event
         // This method is responsable to notify the subscripers that something happends
-        protected virtual void OnVideoEncoded(Video vedio) 
+        protected virtual void OnVideoEncoded(Video video) 
         {
             if(VideoEncoded != null) 
             {
-                VideoEncoded(this, EventArgs.Empty);
+                VideoEncoded(this, new VideoEventArgs() { Video = video});
             }
 
         }
