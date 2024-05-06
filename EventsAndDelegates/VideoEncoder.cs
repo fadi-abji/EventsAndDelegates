@@ -12,10 +12,15 @@ namespace EventsAndDelegates
         // Three steps we need to follow:
 
         // 1 - define a delegate, contract between the publisher and the subscriper
-        public delegate void VideoEncodedEventHandler(object source, VideoEventArgs args);
+        //public delegate void VideoEncodedEventHandler(object source, VideoEventArgs args);
 
         // 2 - define an event based on that delegate, notice it is in the past tens something that happend and finnish
-        public event VideoEncodedEventHandler VideoEncoded;
+        //public event VideoEncodedEventHandler VideoEncoded;
+
+        // 1 and 2 you can make them simply as here
+        //Instead of writing two lines of code here we could simply write
+        //EventHandler (withot sending data) or EventHandler<TEventArgs> (sending some data) like 
+        public event EventHandler<VideoEventArgs> VideoEncoded;
 
         public void Encode(Video vedio)
         {
