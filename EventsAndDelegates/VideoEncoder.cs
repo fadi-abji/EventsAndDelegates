@@ -1,0 +1,38 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EventsAndDelegates
+{
+    public class VideoEncoder
+    {
+        // we want an event in this class to notify the user that the video is finnish 
+        // Three steps we need to follow:
+
+        // 1 - define a delegate, contract between the publisher and the subscriper
+        public delegate void VideoEncodedEventHandler(object source, EventArgs args);
+
+        // 2 - define an event based on that delegate, notice it is in the past tens something that happend and finnish
+        public event VideoEncodedEventHandler VideoEncoded;
+
+        public void Encode(Video vedio)
+        {
+            Console.WriteLine("Encoding vedio...");
+            Thread.Sleep(3000);
+            OnVideoEncoded(vedio);
+        }
+
+        // 3 - Raise the event
+        // This method is responsable to notify the subscripers that something happends
+        protected virtual void OnVideoEncoded(Video vedio) 
+        {
+            if(VideoEncoded != null) 
+            {
+                VideoEncoded(this, EventArgs.Empty);
+            }
+
+        }
+    }
+}
