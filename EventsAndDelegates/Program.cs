@@ -12,7 +12,8 @@ var mailService = new MailService();   // subscriber
 
 var messageService = new MessageService(); // subscriber
 
-videoEncoder.VideoEncoded += mailService.onVideoEncoded; 
+videoEncoder.VideoEncoded += mailService.OnVideoEncoded; 
+
 videoEncoder.VideoEncoded += messageService.OnVideoEncoded;
 
 videoEncoder.Encode(video);

@@ -37,7 +37,6 @@ namespace EventsAndDelegates
             {
                 VideoEncoded(this, new VideoEventArgs() { Video = video});
             }
-
         }
     }
 }
